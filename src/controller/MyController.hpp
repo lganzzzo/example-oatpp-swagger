@@ -43,10 +43,26 @@ public:
    */
 #include OATPP_CODEGEN_BEGIN(ApiController)
   
+  ENDPOINT_INFO(root) {
+    info->summary = "Root endpoint with 'Hello World!!!' message";
+    info->addResponse<MyDto::ObjectWrapper>(Status::CODE_200, "application/json");
+  }
   ENDPOINT("GET", "/", root) {
     auto dto = MyDto::createShared();
     dto->statusCode = 200;
     dto->message = "Hello World!";
+    return createDtoResponse(Status::CODE_200, dto);
+  }
+  
+  ENDPOINT_INFO(echo) {
+    info->summary = "Echo endpoint with custom message";
+    info->addResponse<MyDto::ObjectWrapper>(Status::CODE_200, "application/json");
+  }
+  ENDPOINT("POST", "/echo/status/{status}", echo,
+           PATH(Int32, status), BODY_STRING(String, message)) {
+    auto dto = MyDto::createShared();
+    dto->statusCode = status;
+    dto->message = message;
     return createDtoResponse(Status::CODE_200, dto);
   }
   

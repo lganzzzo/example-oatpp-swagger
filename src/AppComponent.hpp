@@ -9,6 +9,9 @@
 #ifndef AppComponent_hpp
 #define AppComponent_hpp
 
+#include "oatpp-swagger/Model.hpp"
+#include "oatpp-swagger/Resources.hpp"
+
 #include "oatpp/web/server/HttpConnectionHandler.hpp"
 #include "oatpp/web/server/HttpRouter.hpp"
 #include "oatpp/network/server/SimpleTCPConnectionProvider.hpp"
@@ -55,6 +58,38 @@ public:
     deserializerConfig->allowUnknownFields = false;
     auto objectMapper = oatpp::parser::json::mapping::ObjectMapper::createShared(serializerConfig, deserializerConfig);
     return objectMapper;
+  }());
+  
+  /**
+   *  General API docs info
+   */
+  OATPP_CREATE_COMPONENT(std::shared_ptr<oatpp::swagger::DocumentInfo>, swaggerDocumentInfo)([] {
+    
+    oatpp::swagger::DocumentInfo::Builder builder;
+    
+    builder
+    .setTitle("My Demo Service with Swagger-UI")
+    .setDescription("C++/oat++ Web Service with Swagger-UI and OpenApi documentation in 5 minutes")
+    .setVersion("1.0")
+    .setContactName("Mr. Developer")
+    .setContactUrl("https://oatpp.io/")
+    
+    .setLicenseName("Apache License, Version 2.0")
+    .setLicenseUrl("http://www.apache.org/licenses/LICENSE-2.0")
+    
+    .addServer("http://localhost:8000", "server on localhost");
+    
+    return builder.build();
+    
+  }());
+  
+  
+  /**
+   *  Swagger-Ui Resources (<project-root>/lib/oatpp-swagger/res)
+   */
+  OATPP_CREATE_COMPONENT(std::shared_ptr<oatpp::swagger::Resources>, swaggerResources)([] {
+    // Make sure to specify correct full path to oatpp-swagger/res folder !!!
+    return oatpp::swagger::Resources::loadResources(/*"<YOUR-PATH-TO-REPO>/lib/oatpp-swagger/res"*/ "lib/oatpp-swagger/res");
   }());
 
 };

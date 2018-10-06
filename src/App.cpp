@@ -30,6 +30,8 @@
 
 #include <iostream>
 
+#include "oatpp-swagger/Controller.hpp"
+
 /**
  *  run() method.
  *  1) set Environment components.
@@ -44,8 +46,16 @@ void run() {
   
   auto router = components.httpRouter.getObject();
   
-  auto MyController = MyController::createShared();
-  MyController->addEndpointsToRouter(router);
+  auto myController = MyController::createShared();
+  myController->addEndpointsToRouter(router);
+  
+  
+  auto docEndpoints = oatpp::swagger::Controller::Endpoints::createShared();
+  
+  docEndpoints->pushBackAll(myController->getEndpoints());
+  
+  auto swaggerController = oatpp::swagger::Controller::createShared(docEndpoints);
+  swaggerController->addEndpointsToRouter(router);
   
   /* create server */
   
