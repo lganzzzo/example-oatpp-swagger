@@ -83,7 +83,6 @@ public:
     
   }());
   
-  
   /**
    *  Swagger-Ui Resources (<project-root>/lib/oatpp-swagger/res)
    */

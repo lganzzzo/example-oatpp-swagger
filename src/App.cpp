@@ -49,9 +49,8 @@ void run() {
   auto myController = MyController::createShared();
   myController->addEndpointsToRouter(router);
   
-  
+  /* create list of endpoints to document */
   auto docEndpoints = oatpp::swagger::Controller::Endpoints::createShared();
-  
   docEndpoints->pushBackAll(myController->getEndpoints());
   
   auto swaggerController = oatpp::swagger::Controller::createShared(docEndpoints);
