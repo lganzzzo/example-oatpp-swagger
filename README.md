@@ -2,7 +2,7 @@
 c++/oat++ Web Service with Swagger-UI and auto-documented endpoints
 
 More about oatpp see [https://oatpp.io/](https://oatpp.io/)  
-More about oatpp-swagger [https://github.com/oatpp/oatpp-swagger](https://github.com/oatpp/oatpp-swagger)
+More about oatpp-swagger [https://github.com/oatpp/oatpp-swagger](https://github.com/oatpp/oatpp-swagger)  
 More about Swagger UI see [https://swagger.io/tools/swagger-ui/](https://swagger.io/tools/swagger-ui/)
 
 ## Build and run
