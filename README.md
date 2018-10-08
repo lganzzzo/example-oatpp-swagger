@@ -1,25 +1,21 @@
-# oatpp-starter
-oatpp simple-API Starter template project.
-config=(multithreading plus blocking-IO)
+# example-oatpp-swagger
+c++/oat++ Web Service with Swagger-UI and auto-documented endpoints
+
+More about oatpp see [https://oatpp.io/](https://oatpp.io/)  
+More about oatpp-swagger [https://github.com/oatpp/oatpp-swagger](https://github.com/oatpp/oatpp-swagger)
+More about Swagger UI see [https://swagger.io/tools/swagger-ui/](https://swagger.io/tools/swagger-ui/)
 
 ## Build and run
 
 1) Git-Clone examples repo:
 ```
-git clone https://github.com/oatpp/oatpp-examples
+$ git clone --recurse-submodules https://github.com/lganzzzo/example-oatpp-swagger
 ```
-
-2) Get oatpp-lib (it is included as git submodule)
+2) CD to example-oatpp-swagger
 ```
-git submodule init
-git submodule update --remote --merge
+cd example-oatpp-swagger/
 ```
-
-3) CD to crud example-project
-```
-cd crud/
-```
-4) Build project
+3) Build project
 ```
 ./build_app.sh
 ```
@@ -29,6 +25,7 @@ g++ -std=gnu++11 \
 -pthread \
 `find "./lib/oatpp/" -type f -name *.cpp` \
 `find "./src/" -type f -name *.cpp` \
+`find "./lib/oatpp-swagger/" -type f -name *.cpp` \
 -I "./lib" \
 -I "./src" \
 -D OATPP_USE_TARGET \
@@ -40,7 +37,7 @@ g++ -std=gnu++11 \
 
 chmod +x run_app
 ```
-5) Run app
+4) Run app
 ```
 ./run_app
 ```
