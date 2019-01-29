@@ -1,3 +1,12 @@
+**ATTENTION**
+
+This example is outdated.  
+Instead see:  
+[https://github.com/oatpp/example-crud](https://github.com/oatpp/example-crud) 
+
+**ATTENTION**
+
+
 # example-oatpp-swagger
 c++/oat++ Web Service with Swagger-UI and auto-documented endpoints
 
